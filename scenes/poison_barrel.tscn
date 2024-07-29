@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cna1mq0bd1ta2"]
+
+[ext_resource type="Texture2D" uid="uid://c3t374mqb1gdb" path="res://assets/pixil-frame-0 - 2024-07-08T134523.229.png" id="1_xh1rq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndi4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peniv"]
+atlas = ExtResource("1_xh1rq")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llui7"]
+atlas = ExtResource("1_xh1rq")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74ofy"]
+atlas = ExtResource("1_xh1rq")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2jui"]
+atlas = ExtResource("1_xh1rq")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iovo1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peniv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llui7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74ofy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2jui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="poison barrel" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ndi4c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iovo1")
+autoplay = "default"
+frame_progress = 0.940636

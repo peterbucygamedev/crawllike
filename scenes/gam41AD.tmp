@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2t7js7i5rius"]
+
+[ext_resource type="PackedScene" uid="uid://du7g6cnoedf6d" path="res://scenes/player.tscn" id="2_cas84"]
+[ext_resource type="Texture2D" uid="uid://b8uqbg1j64qnj" path="res://assets/pixil-frame-0 - 2024-06-24T124650.208.png" id="2_tu3u5"]
+[ext_resource type="Texture2D" uid="uid://cca57vuh1w1v8" path="res://assets/pixil-frame-0 - 2024-06-24T124808.525.png" id="3_3v7ih"]
+[ext_resource type="PackedScene" uid="uid://b3dchsld0l3cp" path="res://scenes/switch.tscn" id="4_rxp0s"]
+[ext_resource type="PackedScene" uid="uid://jq1g6voc3n4y" path="res://scenes/stalker.tscn" id="5_itbm0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nxl30"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7su3k"]
+texture = ExtResource("2_tu3u5")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1kbo2"]
+texture = ExtResource("3_3v7ih")
+texture_region_size = Vector2i(100, 40)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lh1f7"]
+sources/0 = SubResource("TileSetAtlasSource_7su3k")
+sources/1 = SubResource("TileSetAtlasSource_1kbo2")
+
+[node name="game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-25, 30)
+zoom = Vector2(2.96, 2.96)
+
+[node name="boundries" type="Node" parent="."]
+
+[node name="wall" type="StaticBody2D" parent="boundries"]
+position = Vector2(-27, -56)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/wall"]
+shape = SubResource("WorldBoundaryShape2D_nxl30")
+
+[node name="wall2" type="StaticBody2D" parent="boundries"]
+position = Vector2(-33, 127)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/wall2"]
+shape = SubResource("WorldBoundaryShape2D_nxl30")
+
+[node name="wall3" type="StaticBody2D" parent="boundries"]
+position = Vector2(-213, 40)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/wall3"]
+shape = SubResource("WorldBoundaryShape2D_nxl30")
+
+[node name="wall4" type="StaticBody2D" parent="boundries"]
+position = Vector2(177, 39)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/wall4"]
+shape = SubResource("WorldBoundaryShape2D_nxl30")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_lh1f7")
+format = 2
+layer_0/tile_data = PackedInt32Array(131063, 0, 0, 196599, 0, 1, 131064, 65536, 0, 196600, 65536, 1, 131070, 0, 0, 196606, 0, 1, 131071, 65536, 0, 196607, 65536, 1, -131085, 1, 0, -131079, 65537, 0, -131074, 1, 0, -196604, 65537, 0)
+
+[node name="switch" parent="." instance=ExtResource("4_rxp0s")]
+position = Vector2(-81, 76)
+
+[node name="player" parent="." instance=ExtResource("2_cas84")]
+position = Vector2(-32, 32)
+
+[node name="stalker" parent="." instance=ExtResource("5_itbm0")]
+position = Vector2(-157, 29)
+
+[node name="stalker2" parent="." instance=ExtResource("5_itbm0")]
+position = Vector2(-177, 80)

@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3dchsld0l3cp"]
+
+[ext_resource type="Script" path="res://scripts/switch.gd" id="1_86dov"]
+[ext_resource type="Texture2D" uid="uid://bbfcrx3jpoa3w" path="res://assets/pixil-frame-0 - 2024-06-26T152055.563.png" id="1_oam8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gag7b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1krq"]
+atlas = ExtResource("1_oam8o")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17or1"]
+atlas = ExtResource("1_oam8o")
+region = Rect2(33, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hdc2"]
+atlas = ExtResource("1_oam8o")
+region = Rect2(66, 0, 33, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vda2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1krq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17or1")
+}],
+"loop": false,
+"name": &"move_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hdc2")
+}],
+"loop": false,
+"name": &"move_right",
+"speed": 2.0
+}]
+
+[node name="switch" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_86dov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_gag7b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_3vda2")
+animation = &"move_right"
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

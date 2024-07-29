@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmuwrde5nl2hv"]
+
+[ext_resource type="Texture2D" uid="uid://6f3bdaq123e4" path="res://assets/pixil-frame-0 - 2024-07-08T141550.345.png" id="1_lsb6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reh4u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v0yd"]
+atlas = ExtResource("1_lsb6e")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j877y"]
+atlas = ExtResource("1_lsb6e")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rer1s"]
+atlas = ExtResource("1_lsb6e")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1chf"]
+atlas = ExtResource("1_lsb6e")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bvtar"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_1v0yd")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_j877y")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rer1s")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_x1chf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="skeleton" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_reh4u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bvtar")
+autoplay = "default"
+frame_progress = 0.81945

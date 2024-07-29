@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://quoc5scnk4rc"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_sev26"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sev26")
+
+[node name="crawlLike" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play Game"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 37.0
+offset_bottom = 62.0
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
